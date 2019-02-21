@@ -1,8 +1,8 @@
-var action = document.getElementById("selector")
-var selector_form = document.getElementById("selector-form");
-
-action.addEventListener("change", selection);
-
-function selection(e){
-   selector_form.setAttribute("action", "./"+e.target.value+".php"); 
-}
+function expand() {
+   var x = document.getElementById("myTopnav");
+   if (x.className === "topnav") {
+     x.className += " responsive";
+   } else {
+     x.className = "topnav";
+   }
+ }

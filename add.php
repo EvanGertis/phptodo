@@ -3,19 +3,17 @@
 ?>
 
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $task = test_input($_POST['task']);
-        $id = test_input($_POST['id']);
-        insertNewTask($task, $id);
-        echo $task;
-      }
-
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $task = $_POST['task'];
+    if (empty($task)) {
+        echo "Name is empty";
+    } else {
+        insertNewTask($task);
     }
+}
 ?>
+
+
 
 <?php include("./views/partials/footer.php") ?>

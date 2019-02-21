@@ -2,21 +2,10 @@
       include("./model.php");
 ?>
 
-<form id="selector-form" method="post" name="todo">
+
   <table>
     <tr>
-      <td>
-        <select id = "selector">
-        
-          <option>ACTION</option>
-          <option>edit</option>
-          <option>delete</option>
-
-        </select>
-      </td>
-
       <td>TODO</td>
-
     </tr>
 
     <?php 
@@ -24,7 +13,12 @@
     foreach ($rows as $key => $col) {
     ?>
       <tr id= <?php echo $col['id']?>>
-        <td><input type="radio"/></td>
+      <form action = "./delete.php" method="post">
+        <td>
+        <input type="submit" value="delete">
+        <input name="id" value=<?php echo $col['id']?> hidden>
+        </td>
+      </form>
         <td><?php echo $col['task']?></td>
       </tr>
     
@@ -32,8 +26,9 @@
     }
     ?>
   </table>
-
-  <input type="submit">
+<form action="./add.php" method="post" name="todo">
+  <input type= "text" name="task">
+  <input type="submit" value = "add">
 </form>
 
 <?php include("./views/partials/footer.php") ?>

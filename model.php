@@ -48,18 +48,15 @@ function getAllTasks(){
 
 }
 
-function insertNewTask($task, $id){
+function insertNewTask($task){
     try {
         $conn = new PDO("mysql:host=localhost;dbname=todo", 'root', '');
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "UPDATE list SET task=:task WHERE id=:id";
-
+        $sql = "INSERT INTO list (task) VALUES (:task)";
         $stmt = $conn->prepare($sql); 
+        $stmt->bindParam(':task', $task);
         $stmt->execute();
-
-        // set the resulting array to associative
-        $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-        return ($stmt->fetchAll()); 
+        echo "added ".$task;
     }
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
@@ -67,4 +64,26 @@ function insertNewTask($task, $id){
     }
     $conn = null;
 
+}
+
+function deleteTask($id){
+    try {
+        $conn = new PDO("mysql:host=localhost;dbname=todo", 'root', '');
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+        // sql to delete a record
+        $sql = "DELETE FROM list WHERE id= :id";
+    
+        $stmt = $conn->prepare($sql); 
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        echo "task deleted successfully";
+        }
+    catch(PDOException $e)
+        {
+        echo $sql . "<br>" . $e->getMessage();
+        }
+    
+    $conn = null;
 }
