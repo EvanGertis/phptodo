@@ -15,7 +15,7 @@
       <tr id= <?php echo $col['id']?>>
       <form action = "./delete.php" method="post">
         <td>
-        <input type="submit" value="delete">
+        <input type="submit" value="done">
         <input name="id" value=<?php echo $col['id']?> hidden>
         </td>
       </form>
