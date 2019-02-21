@@ -27,7 +27,7 @@
     ?>
   </table>
 <form action="./add.php" method="post" name="todo">
-  <input type= "text" name="task">
+  <input type= "text" name="task" placeholder="Enter a new task..">
   <input type="submit" value = "add">
 </form>
 

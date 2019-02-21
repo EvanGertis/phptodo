@@ -25,7 +25,7 @@
 
   <!-- Add your site or application content here -->
   <div class="topnav" id="myTopnav">
-    <a href="index.php" class="active">Home</a>
+    <a href="index.php" class="active">Mylist</a>
     <a href="javascript:void(0);" class="icon" onclick="expand()">
       <i class="fa fa-bars"></i>
     </a>
